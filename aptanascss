@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#echo "Ponce SCSS/SASS compiler"
+#echo $@
+
+filename=$(basename -- "$1")
+extension="${filename##*.}"
+filename="${filename%.*}"
+#echo filename $filename
+#echo extension $extension
+
+if [[ $filename == "config.project" || $filename == "config.device" ]]; then
+  exit;
+fi
+
+if [[ $extension == "scss" || $extension == "sass" ]]; then
+  echo "Ponce SCSS/SASS compiler"
+  /usr/local/bin/sass --update $1
+fi
